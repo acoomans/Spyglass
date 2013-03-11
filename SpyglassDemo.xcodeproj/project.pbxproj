@@ -24,6 +24,7 @@
 		51EFEC1616EE50CA0071D824 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51EFEBEE16EE50CA0071D824 /* Foundation.framework */; };
 		51EFEC1E16EE50CA0071D824 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 51EFEC1C16EE50CA0071D824 /* InfoPlist.strings */; };
 		51EFEC2116EE50CA0071D824 /* SpyglassDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EFEC2016EE50CA0071D824 /* SpyglassDemoTests.m */; };
+		51EFEC2D16EE515F0071D824 /* ACSpyglass.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EFEC2C16EE515F0071D824 /* ACSpyglass.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		51EFEC1D16EE50CA0071D824 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		51EFEC1F16EE50CA0071D824 /* SpyglassDemoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpyglassDemoTests.h; sourceTree = "<group>"; };
 		51EFEC2016EE50CA0071D824 /* SpyglassDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpyglassDemoTests.m; sourceTree = "<group>"; };
+		51EFEC2B16EE515F0071D824 /* ACSpyglass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACSpyglass.h; sourceTree = "<group>"; };
+		51EFEC2C16EE515F0071D824 /* ACSpyglass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACSpyglass.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,7 @@
 		51EFEBE016EE50CA0071D824 = {
 			isa = PBXGroup;
 			children = (
+				51EFEC2A16EE51230071D824 /* Spyglass */,
 				51EFEBF216EE50CA0071D824 /* SpyglassDemo */,
 				51EFEC1916EE50CA0071D824 /* SpyglassDemoTests */,
 				51EFEBEB16EE50CA0071D824 /* Frameworks */,
@@ -161,6 +165,15 @@
 				51EFEC1C16EE50CA0071D824 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		51EFEC2A16EE51230071D824 /* Spyglass */ = {
+			isa = PBXGroup;
+			children = (
+				51EFEC2B16EE515F0071D824 /* ACSpyglass.h */,
+				51EFEC2C16EE515F0071D824 /* ACSpyglass.m */,
+			);
+			path = Spyglass;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,6 +291,7 @@
 				51EFEBF916EE50CA0071D824 /* main.m in Sources */,
 				51EFEBFD16EE50CA0071D824 /* ACAppDelegate.m in Sources */,
 				51EFEC0616EE50CA0071D824 /* ACViewController.m in Sources */,
+				51EFEC2D16EE515F0071D824 /* ACSpyglass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +482,7 @@
 				51EFEC2616EE50CA0071D824 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		51EFEC2716EE50CA0071D824 /* Build configuration list for PBXNativeTarget "SpyglassDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -476,6 +491,7 @@
 				51EFEC2916EE50CA0071D824 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
