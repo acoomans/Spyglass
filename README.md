@@ -17,7 +17,7 @@ To get the submodules:
 	
 Then drag and drop the _Base64/Base64_ and _OpenUDID_ in your project.
 
-Disable _ARC_ for _OpenUDID.m_ compilation (_-fno-objc-arc_)
+Disable _ARC_ for _OpenUDID.m_ ( _-fno-objc-arc_ )
 
 
 ## Documentation
