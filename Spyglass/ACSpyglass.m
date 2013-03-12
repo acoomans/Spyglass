@@ -184,28 +184,6 @@ static NSString * const kACSpyglassPersistanceFilename = @"spyglass-%@.plist";
     return base64;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #pragma mark * Persistence
 
 - (NSString *)filePathForData:(NSString *)data {
