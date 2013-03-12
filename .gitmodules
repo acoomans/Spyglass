@@ -1,0 +1,6 @@
+[submodule "submodules/OpenUDID"]
+	path = submodules/OpenUDID
+	url = git://github.com/ylechelle/OpenUDID.git
+[submodule "submodules/Base64"]
+	path = submodules/Base64
+	url = git://github.com/nicklockwood/Base64.git

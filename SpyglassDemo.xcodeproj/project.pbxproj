@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		514A924916EFBE6C00FF5505 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 514A924816EFBE6C00FF5505 /* Base64.m */; };
+		514A924B16EFC2B100FF5505 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 514A924A16EFC2B100FF5505 /* README.md */; };
 		51EFEBED16EE50CA0071D824 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51EFEBEC16EE50CA0071D824 /* UIKit.framework */; };
 		51EFEBEF16EE50CA0071D824 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51EFEBEE16EE50CA0071D824 /* Foundation.framework */; };
 		51EFEBF116EE50CA0071D824 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51EFEBF016EE50CA0071D824 /* CoreGraphics.framework */; };
@@ -25,6 +27,7 @@
 		51EFEC1E16EE50CA0071D824 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 51EFEC1C16EE50CA0071D824 /* InfoPlist.strings */; };
 		51EFEC2116EE50CA0071D824 /* SpyglassDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EFEC2016EE50CA0071D824 /* SpyglassDemoTests.m */; };
 		51EFEC2D16EE515F0071D824 /* ACSpyglass.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EFEC2C16EE515F0071D824 /* ACSpyglass.m */; };
+		51EFEC3316EE57690071D824 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EFEC3116EE57690071D824 /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		514A924716EFBE6C00FF5505 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		514A924816EFBE6C00FF5505 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		514A924A16EFC2B100FF5505 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		51EFEBE916EE50CA0071D824 /* SpyglassDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpyglassDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51EFEBEC16EE50CA0071D824 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		51EFEBEE16EE50CA0071D824 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -63,6 +69,8 @@
 		51EFEC2016EE50CA0071D824 /* SpyglassDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpyglassDemoTests.m; sourceTree = "<group>"; };
 		51EFEC2B16EE515F0071D824 /* ACSpyglass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACSpyglass.h; sourceTree = "<group>"; };
 		51EFEC2C16EE515F0071D824 /* ACSpyglass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACSpyglass.m; sourceTree = "<group>"; };
+		51EFEC3016EE57690071D824 /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
+		51EFEC3116EE57690071D824 /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,9 +97,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		514A924616EFBE6C00FF5505 /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				514A924716EFBE6C00FF5505 /* Base64.h */,
+				514A924816EFBE6C00FF5505 /* Base64.m */,
+			);
+			name = Base64;
+			path = submodules/Base64/Base64;
+			sourceTree = "<group>";
+		};
 		51EFEBE016EE50CA0071D824 = {
 			isa = PBXGroup;
 			children = (
+				514A924A16EFC2B100FF5505 /* README.md */,
+				51EFEC2E16EE575C0071D824 /* Libraries */,
 				51EFEC2A16EE51230071D824 /* Spyglass */,
 				51EFEBF216EE50CA0071D824 /* SpyglassDemo */,
 				51EFEC1916EE50CA0071D824 /* SpyglassDemoTests */,
@@ -176,6 +196,25 @@
 			path = Spyglass;
 			sourceTree = "<group>";
 		};
+		51EFEC2E16EE575C0071D824 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				514A924616EFBE6C00FF5505 /* Base64 */,
+				51EFEC2F16EE57690071D824 /* OpenUDID */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		51EFEC2F16EE57690071D824 /* OpenUDID */ = {
+			isa = PBXGroup;
+			children = (
+				51EFEC3016EE57690071D824 /* OpenUDID.h */,
+				51EFEC3116EE57690071D824 /* OpenUDID.m */,
+			);
+			name = OpenUDID;
+			path = submodules/OpenUDID;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -254,6 +293,7 @@
 				51EFEC0316EE50CA0071D824 /* Default-568h@2x.png in Resources */,
 				51EFEC0916EE50CA0071D824 /* ACViewController_iPhone.xib in Resources */,
 				51EFEC0C16EE50CA0071D824 /* ACViewController_iPad.xib in Resources */,
+				514A924B16EFC2B100FF5505 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +332,8 @@
 				51EFEBFD16EE50CA0071D824 /* ACAppDelegate.m in Sources */,
 				51EFEC0616EE50CA0071D824 /* ACViewController.m in Sources */,
 				51EFEC2D16EE515F0071D824 /* ACSpyglass.m in Sources */,
+				51EFEC3316EE57690071D824 /* OpenUDID.m in Sources */,
+				514A924916EFBE6C00FF5505 /* Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
