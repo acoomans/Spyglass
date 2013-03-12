@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		514A924C16EFC5E100FF5505 /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 514A924D16EFC5E100FF5505 /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				514A925016EFC5E600FF5505 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		514A924916EFBE6C00FF5505 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 514A924816EFBE6C00FF5505 /* Base64.m */; };
 		514A924B16EFC2B100FF5505 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 514A924A16EFC2B100FF5505 /* README.md */; };
@@ -278,6 +292,7 @@
 			targets = (
 				51EFEBE816EE50CA0071D824 /* SpyglassDemo */,
 				51EFEC1116EE50CA0071D824 /* SpyglassDemoTests */,
+				514A924C16EFC5E100FF5505 /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -308,6 +323,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		514A925016EFC5E600FF5505 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"Spyglass\" \\\n--project-company \"acoomans\" \\\n--company-id \"com.acoomans\" \\\n--output build \\\n--create-docset \\\n--install-docset \\\n--create-html \\\n--exit-threshold 2 \\\n--no-repeat-first-par \\\nSpyglass";
+		};
 		51EFEC1016EE50CA0071D824 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -391,6 +419,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		514A924E16EFC5E100FF5505 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		514A924F16EFC5E100FF5505 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		51EFEC2216EE50CA0071D824 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -508,6 +550,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		514A924D16EFC5E100FF5505 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				514A924E16EFC5E100FF5505 /* Debug */,
+				514A924F16EFC5E100FF5505 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		51EFEBE416EE50CA0071D824 /* Build configuration list for PBXProject "SpyglassDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
