@@ -15,6 +15,8 @@ def hello():
 	pp.pprint(json.loads(data))
 	print "\n"
 	
+	# check for duplicates before storing in db
+	
 	return json.dumps({
 		'result': "ok",
 		'code': 0
