@@ -50,7 +50,7 @@
 
 /** Singleton instance
  */
-+ (id)sharedInstance;
++ (instancetype)sharedInstance;
 
 
 /** @name Tracking events */

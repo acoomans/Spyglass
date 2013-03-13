@@ -7,23 +7,32 @@
 //
 
 #import "ACViewController.h"
+#import "ACSpyglass.h"
 
 @interface ACViewController ()
-
+@property (nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation ACViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    [ACSpyglass sharedInstance].userIdentifier = @"black beard";
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3.0
+                                                  target:self
+                                                selector:@selector(onTick:)
+                                                userInfo:nil
+                                                 repeats:YES];
+                                         
+    [self.timer fire];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)onTick:(NSTimer *)timer {
+    [[ACSpyglass sharedInstance] track:@"Attack!" properties:@{
+        @"roll" : [NSNumber numberWithInt:arc4random() % 74]
+     }];
 }
 
 @end

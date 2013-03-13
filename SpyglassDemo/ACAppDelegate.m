@@ -7,8 +7,8 @@
 //
 
 #import "ACAppDelegate.h"
-
 #import "ACViewController.h"
+#import "ACSpyglass.h"
 
 @implementation ACAppDelegate
 
@@ -23,6 +23,10 @@
     }
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
+    [ACSpyglass sharedInstance].flushInterval = 10;
+    [ACSpyglass sharedInstance].serverURL = @"http://localhost:5403/api/1";
+    
     return YES;
 }
 

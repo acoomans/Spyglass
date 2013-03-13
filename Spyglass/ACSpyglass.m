@@ -84,20 +84,18 @@ static NSString * const kACSpyglassPersistanceFilename = @"spyglass-%@.plist";
             NSLog(@"Spyglass track called with empty event parameter. Ignored");
             return;
         }
-        
-        NSMutableDictionary *p = [NSMutableDictionary dictionary];
-        [p setObject:[NSNumber numberWithLong:(long)[[NSDate date] timeIntervalSince1970]] forKey:@"time"];
+                
+        NSMutableDictionary *e = [@{
+                                  @"event": event,
+                                  @"time": [NSNumber numberWithLong:(long)[[NSDate date] timeIntervalSince1970]],
+                                  @"properties": properties
+                                  } mutableCopy];
         
         for (id key in @[@"deviceIdentifier", @"userIdentifier"]) {
             if ([self valueForKey:key]) {
-                p[key] = [self valueForKey:key];
+                e[key] = [self valueForKey:key];
             }
         }
-                
-        NSDictionary *e = @{
-                            @"event": event,
-                            @"properties": p
-                            };
                             
         NSLog(@"Spyglass: queueing event %@", e);
         [self.eventsQueue addObject:e];
@@ -162,8 +160,8 @@ static NSString * const kACSpyglassPersistanceFilename = @"spyglass-%@.plist";
     }
     
     NSString *data = [self encodeAPIData:self.eventsBatch];
-    NSString *postBody = [NSString stringWithFormat:@"ip=1&data=%@", data];
-    self.eventsConnection = [self apiConnectionWithEndpoint:@"/track/events/" andBody:postBody];//TODO
+    NSString *postBody = [NSString stringWithFormat:@"data=%@", data];
+    self.eventsConnection = [self apiConnectionWithEndpoint:@"/track/events/" andBody:postBody];
 }
 
 - (void)cancelFlush {
@@ -385,9 +383,13 @@ static NSString * const kACSpyglassPersistanceFilename = @"spyglass-%@.plist";
     @synchronized(self) {
         NSLog(@"Spyglass: http response finished loading");
         if (connection == self.eventsConnection) {
-            NSString *response = [[NSString alloc] initWithData:self.eventsResponseData encoding:NSUTF8StringEncoding];
-            if ([response intValue] == 0) {
-                NSLog(@"%@ track api error: %@", self, response); //TODO
+            
+            NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:self.eventsResponseData
+                                                                           options:0
+                                                                             error:nil];
+            
+            if ([responseObject[@"code"] intValue] != 0) {
+                NSLog(@"%@ track api error: %@", self, responseObject);
             }
             
             [self.eventsQueue removeObjectsInArray:self.eventsBatch];
