@@ -29,3 +29,14 @@ install appledoc:
 build the _Documentation_ target,
 
 the documentation will be automatically added to Xcode.
+
+
+## Testing
+
+Run the server:
+
+    cd server
+    pip install -r requirements.txt
+    python server.py
+    
+Then run the _SpyglassDemo_
