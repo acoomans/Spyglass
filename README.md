@@ -39,4 +39,4 @@ Run the server:
     pip install -r requirements.txt
     python server.py
     
-Then run the _SpyglassDemo_
+Then run the _SpyglassDemo_ target
