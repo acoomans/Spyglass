@@ -3,13 +3,13 @@ Spyglass
 
 ## Usage
 
-Get _Spyglass_ code
+Get _Spyglass_ code:
 
 	git clone git@github.com:acoomans/Spyglass.git
 	
-Then drag and drop the _Spyglass_ directory in your project
+Then drag and drop the _Spyglass_ directory in your project.
 
-To get the dependancies, get the submodules:
+To get the dependencies, get the submodules:
 
 	cd Spyglass
 	git submodule update --init --recursive
@@ -29,7 +29,7 @@ Optionaly, you can track the user:
 
     [ACSpyglass sharedInstance].userIdentifier = @"black beard";
     
-Track event:
+Start track events with:
 
     [[ACSpyglass sharedInstance] track:@"Attack!" properties:@{
         @"roll" : [NSNumber numberWithInt:arc4random() % 74]
