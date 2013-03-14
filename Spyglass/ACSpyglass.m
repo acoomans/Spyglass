@@ -23,7 +23,7 @@
 #import "OpenUDID.h"
 #import "Base64.h"
 
-static NSString * const kACSpyglassServerURL = @"http://www.example.com/api/1/";
+static NSString * const kACSpyglassServerURLString = @"http://www.example.com/api/1/";
 static NSUInteger const kACSpyglassFlushInterval = 10;
 static NSUInteger const kACSpyglassEventsBatchCount = 50;
 static NSString * const kACSpyglassPersistanceFilename = @"spyglass-%@.plist";
@@ -50,7 +50,7 @@ static NSString * const kACSpyglassPersistanceFilename = @"spyglass-%@.plist";
     if (self) {
         self.deviceIdentifier = [OpenUDID value];
         self.userIdentifier = nil;
-        self.serverURL = kACSpyglassServerURL;
+        self.serverURL = [NSURL URLWithString:kACSpyglassServerURLString];
         self.flushInterval = kACSpyglassFlushInterval;
         self.eventsQueue = [@[] mutableCopy];
         self.eventsBatch = nil;
@@ -342,7 +342,7 @@ static NSString * const kACSpyglassPersistanceFilename = @"spyglass-%@.plist";
 #pragma mark * NSURLConnection callbacks
 
 - (NSURLConnection *)apiConnectionWithEndpoint:(NSString *)endpoint andBody:(NSString *)body {
-    NSURL *url = [NSURL URLWithString:[self.serverURL stringByAppendingString:endpoint]];
+    NSURL *url = [NSURL URLWithString:[[self.serverURL absoluteString] stringByAppendingString:endpoint]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
     [request setHTTPMethod:@"POST"];

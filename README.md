@@ -23,7 +23,7 @@ Note: Disable _ARC_ for _OpenUDID.m_ ( _-fno-objc-arc_ ).
 
 First, setup _Spyglass_ server url:
 
-    [ACSpyglass sharedInstance].serverURL = @"http://www.example.com/api/1";
+    [ACSpyglass sharedInstance].serverURL = [NSURL URLWithString:@"http://www.example.com/api/1"];
     
 Optionaly, you can track the user:
 

@@ -36,7 +36,7 @@
 
 /** The base URL for API requests.
  */
-@property (nonatomic, strong) NSString *serverURL;
+@property (nonatomic, strong) NSURL *serverURL;
 
 /** Flush timer's interval in seconds
  *
