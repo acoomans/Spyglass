@@ -392,26 +392,38 @@ static NSString * const kACSpyglassPersistanceFilename = @"spyglass-%@.plist";
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     @synchronized(self) {
-        SGLog(@"Spyglass: http response finished loading");
-        if (connection == self.eventsConnection) {
-            
-            NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:self.eventsResponseData
-                                                                           options:0
-                                                                             error:nil];
-            
-            if ([responseObject[@"code"] intValue] != 0) {
-                NSLog(@"%@ track api error: %@", self, responseObject);
+        @try {
+            SGLog(@"Spyglass: http response finished loading");
+            if (connection == self.eventsConnection) {
+                
+                if (!self.eventsResponseData) {
+                    [NSException raise:@"noEventsResponseData" format:@"Spyglass: api response error, no data"];
+                }
+                
+                NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:self.eventsResponseData
+                                                                               options:0
+                                                                                 error:nil];
+                if (!responseObject) {
+                    [NSException raise:@"noResponseObject" format:@"Spyglass: api response error, data not json"];
+                }
+                
+                if ([responseObject[@"code"] intValue] != 0) {
+                    [NSException raise:@"responseCodeError" format:@"Spyglass: track api error, %@", responseObject];
+                }
+                
+                [self.eventsQueue removeObjectsInArray:self.eventsBatch];
+                [self archiveEvents];
             }
-            
-            [self.eventsQueue removeObjectsInArray:self.eventsBatch];
-            [self archiveEvents];
-            
+        }
+        @catch (NSException *exception) {
+            NSLog(@"%@", exception);
+        }
+        @finally {
             self.eventsBatch = nil;
             self.eventsResponseData = nil;
             self.eventsConnection = nil;
-            
+            [self endBackgroundTaskIfComplete];
         }
-        [self endBackgroundTaskIfComplete];
     }
 }
 
