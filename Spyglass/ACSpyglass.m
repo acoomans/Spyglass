@@ -274,12 +274,14 @@ static NSString * const kACSpyglassPersistanceFilename = @"spyglass-%@.plist";
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification {
+    [self track:@"applicationDidBecomeActive"];
     @synchronized(self) {
         [self startFlushTimer];
     }
 }
 
 - (void)applicationWillResignActive:(NSNotification *)notification {
+    [self track:@"applicationWillResignActive"];
     @synchronized(self) {
         [self stopFlushTimer];
     }
@@ -287,7 +289,6 @@ static NSString * const kACSpyglassPersistanceFilename = @"spyglass-%@.plist";
 
 - (void)applicationDidEnterBackground:(NSNotificationCenter *)notification {
     @synchronized(self) {
-        
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 40000
         if ([[UIApplication sharedApplication] respondsToSelector:@selector(beginBackgroundTaskWithExpirationHandler:)] &&
             [[UIApplication sharedApplication] respondsToSelector:@selector(endBackgroundTask:)]) {
