@@ -23,6 +23,13 @@
 #import "OpenUDID.h"
 #import "Base64.h"
 
+#ifdef SPYGLASS_LOG
+#define SGLog(...) NSLog(__VA_ARGS__)
+#else
+#define SGLog(...)
+#endif
+
+
 static NSString * const kACSpyglassServerURLString = @"http://www.example.com/api/1/";
 static NSUInteger const kACSpyglassFlushInterval = 10;
 static NSUInteger const kACSpyglassEventsBatchCount = 50;
@@ -97,7 +104,7 @@ static NSString * const kACSpyglassPersistanceFilename = @"spyglass-%@.plist";
             }
         }
                             
-        NSLog(@"Spyglass: queueing event %@", e);
+        SGLog(@"Spyglass: queueing event %@", e);
         [self.eventsQueue addObject:e];
         
         dispatch_queue_t myQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
@@ -125,7 +132,7 @@ static NSString * const kACSpyglassPersistanceFilename = @"spyglass-%@.plist";
                                                         selector:@selector(flush)
                                                         userInfo:nil
                                                          repeats:YES];
-            NSLog(@"Spyglass: started flush timer %@", self.timer);
+            SGLog(@"Spyglass: started flush timer %@", self.timer);
         }
     }
 }
@@ -134,7 +141,7 @@ static NSString * const kACSpyglassPersistanceFilename = @"spyglass-%@.plist";
     @synchronized(self) {
         if (self.timer) {
             [self.timer invalidate];
-            NSLog(@"Spyglass: stopped flush timer %@", self.timer);
+            SGLog(@"Spyglass: stopped flush timer %@", self.timer);
         }
         self.timer = nil;
     }
@@ -142,7 +149,7 @@ static NSString * const kACSpyglassPersistanceFilename = @"spyglass-%@.plist";
 
 - (void)flush {
     @synchronized(self) {
-        NSLog(@"Spyglass: flushing data to %@", self.serverURL);
+        SGLog(@"Spyglass: flushing data to %@", self.serverURL);
         [self flushEvents];
     }
 }
@@ -348,12 +355,12 @@ static NSString * const kACSpyglassPersistanceFilename = @"spyglass-%@.plist";
     [request setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(@"Spyglass: http request");
+    SGLog(@"Spyglass: http request");
     return [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response {
-    NSLog(@"Spyglass: http status code %d", [response statusCode]);
+    SGLog(@"Spyglass: http status code %d", [response statusCode]);
     if ([response statusCode] != 200) {
         NSLog(@"Spyglass: http error: %@", [NSHTTPURLResponse localizedStringForStatusCode:[response statusCode]]);
     } else if (connection == self.eventsConnection) {
@@ -382,7 +389,7 @@ static NSString * const kACSpyglassPersistanceFilename = @"spyglass-%@.plist";
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     @synchronized(self) {
-        NSLog(@"Spyglass: http response finished loading");
+        SGLog(@"Spyglass: http response finished loading");
         if (connection == self.eventsConnection) {
             
             NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:self.eventsResponseData
