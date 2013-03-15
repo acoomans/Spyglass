@@ -94,7 +94,7 @@ static NSString * const kACSpyglassPersistanceFilename = @"spyglass-%@.plist";
         NSMutableDictionary *e = [@{
                                   @"event": event,
                                   @"timestamp": [NSNumber numberWithLong:(long)[[NSDate date] timeIntervalSince1970]],
-                                  @"properties": properties
+                                  @"properties": (properties ? properties : @{})
                                   } mutableCopy];
         
         for (id key in @[@"deviceIdentifier", @"userIdentifier"]) {
