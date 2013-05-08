@@ -1,5 +1,7 @@
-Spyglass
-========
+#Spyglass
+
+Spyglass is an events tracking analytics library for iOS.
+
 
 ## Usage
 
